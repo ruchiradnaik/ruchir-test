@@ -34,7 +34,11 @@ def formingMagicSquare(s):
 
 if __name__ == '__main__':
     output_path = 'output.txt'  # Define output path
-    fptr = open(output_path, 'w')
+    try:
+        fptr = open(output_path, 'w')
+    except PermissionError:
+        print("Permission denied: Unable to write to output.txt")
+        sys.exit(1)
 
     s = []
 
