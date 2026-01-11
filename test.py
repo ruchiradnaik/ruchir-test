@@ -41,9 +41,12 @@ if __name__ == '__main__':
         except EOFError:
             break  # Handle EOFError gracefully
 
-    result = formingMagicSquare(s)
+    if len(s) == 3 and all(len(row) == 3 for row in s):  # Ensure s is a 3x3 matrix
+        result = formingMagicSquare(s)
+        fptr.write(str(result) + '\n')  # Converted result to str and added newline
+    else:
+        fptr.write("Input must be a 3x3 matrix.\n")  # Handle incorrect input size
 
-    fptr.write(str(result) + '\n')  # Converted result to str and added newline
     fptr.close()
 
 # CodeSentinal: created for you by RuchirAdnaik.
