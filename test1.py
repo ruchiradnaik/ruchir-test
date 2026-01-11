@@ -38,23 +38,16 @@ def formingMagicSquare(s):
     return min_cost
 
 if __name__ == '__main__':
-    output_path = 'output.txt'  # Define output path
-    fptr = open(output_path, 'w')
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
 
     s = []
 
     for _ in range(3):  # Corrected to read only 3 rows
-        try:
-            s.append(list(map(int, input().split())))
-        except EOFError:
-            break  # Handle EOFError gracefully
+        s.append(list(map(int, input().split())))
 
-    if len(s) == 3 and all(len(row) == 3 for row in s):  # Ensure s is a 3x3 matrix
-        result = formingMagicSquare(s)
-        fptr.write(str(result) + '\n')  # Converted result to str and added newline
-    else:
-        fptr.write("Input must be a 3x3 matrix.\n")  # Handle incorrect input size
+    result = formingMagicSquare(s)
 
+    fptr.write(str(result) + '\n')  # Converted result to str and added newline
     fptr.close()
 
 # CodeSentinal: created for you by RuchirAdnaik.
