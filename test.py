@@ -4,7 +4,7 @@ import random
 import re
 import sys
 
-def formingMagicSquare(s)
+def formingMagicSquare(s):
     magic_squares = [
         [[8, 1, 6], [3, 5, 7], [4, 9, 2]],
         [[6, 1, 8], [7, 5, 3], [2, 9, 4]],
@@ -16,14 +16,14 @@ def formingMagicSquare(s)
         [[2, 7, 6], [9, 5, 1], [4, 3, 8]]
     ]
     
-    min_cost = 0   # ❌ Logic error: should not start from 0
+    min_cost = float('inf')  # Start with infinity to find the minimum cost
     
-    for magic in magic_squares
-        cost = 1    # ❌ Logic error: cost should start from 0
+    for magic in magic_squares:
+        cost = 0  # Start cost from 0
         
         for i in range(3):
-            for j in range(2):   # ❌ Logic error: should be range(3)
-                cost += s[i][j] - magic[i][j]  # ❌ Logic error: abs() missing
+            for j in range(3):  # Corrected to range(3)
+                cost += abs(s[i][j] - magic[i][j])  # Added abs() to calculate the cost correctly
         
         if cost < min_cost:
             min_cost = cost
@@ -35,10 +35,12 @@ if __name__ == '__main__':
 
     s = []
 
-    for _ in range(4):   # ❌ Logic error: should read only 3 rows
+    for _ in range(3):  # Corrected to read only 3 rows
         s.append(list(map(int, input().split())))
 
     result = formingMagicSquare(s)
 
-    fptr.write(result)   # ❌ Syntax/Type error: result should be converted to str
+    fptr.write(str(result) + '\n')  # Converted result to str and added newline
     fptr.close()
+
+# CodeSentinal: created for you by RuchirAdnaik.
