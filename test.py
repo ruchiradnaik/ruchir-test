@@ -36,7 +36,10 @@ if __name__ == '__main__':
     s = []
 
     for _ in range(3):  # Corrected to read only 3 rows
-        s.append(list(map(int, input().split())))
+        try:
+            s.append(list(map(int, input().split())))
+        except EOFError:
+            break  # Handle EOFError gracefully
 
     result = formingMagicSquare(s)
 
