@@ -32,7 +32,8 @@ def formingMagicSquare(s):
     return min_cost
 
 if __name__ == '__main__':
-    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+    output_path = os.environ.get('OUTPUT_PATH', 'output.txt')  # Default to 'output.txt' if not set
+    fptr = open(output_path, 'w')
 
     s = []
 
